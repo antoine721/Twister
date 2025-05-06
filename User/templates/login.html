@@ -1,0 +1,52 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="{% static 'css/login.css' %}" />
+    <title>Connexion à X</title>
+  </head>
+  <body>
+    <div class="login_container">
+      <div class="up_container">
+        <img
+          src="{% static 'images/twitter-x-logo-white.png' %}"
+          alt="logo_X"
+        />
+        <h1>Connectez-vous à X</h1>
+        <div class="login_with_account"></div>
+      </div>
+
+      <!-- ----------------ou---------------- -->
+      <div class="or_container">
+        <div class="or_line"></div>
+        <span>ou</span>
+        <div class="or_line"></div>
+      </div>
+
+      <!-- input email -->
+      <div class="input_container">
+        <form method="post" action="{% url 'login_password' %}">
+          {% csrf_token %}
+          <input
+            type="email"
+            name="email"
+            id="email"
+            placeholder="Email"
+            required
+          />
+          <button type="submit" class="next_button">Suivant</button>
+        </form>
+
+        <div class="forgot_password">
+          <a href="/forgot_password">Mot de passe oublié ?</a>
+        </div>
+
+        <p>
+          Vous n'avez pas de compte ? <a href="/register">Inscrivez-vous</a>
+        </p>
+      </div>
+    </div>
+  </body>
+</html>
